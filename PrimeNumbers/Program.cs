@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace PrimeNumbers
 {
@@ -10,8 +11,8 @@ namespace PrimeNumbers
             //initialize condition
             bool isPrime = true;
             Console.WriteLine("This program displays the prime numbers from 0 to 1000...\n");
+            Thread.Sleep(2000);
             Console.WriteLine("Here are the prime numbers below:");
-
             for (int i = 2; i <= 1000; i++)
             {
                 for (int j = 2; j <= 1000; j++)
@@ -24,12 +25,12 @@ namespace PrimeNumbers
                 }
                 if (isPrime)
                 {
-                    Console.Write("\t{0}", i);
+                    Console.Write($"\t{i}");
                 }
                 isPrime = true;
             }
-            Console.ReadLine();
-            Console.Write("\nIt can also go from 0 to a number you pick, type y to continue or n to end the program ");
+            Thread.Sleep(2000);
+            Console.Write("\n\nIt can also go from 0 to a number you pick, type y to continue or n to end the program ");
             var user_choice = Console.ReadLine().ToLower();
             switch (user_choice)
             {
@@ -73,18 +74,21 @@ namespace PrimeNumbers
                         }
                     }
                 }
-                Console.Write("The prime numbers are: ");
+                Console.Write($"The prime numbers from 0 to {range} are: ");
                 foreach (int number in primeNumbers)
                 {
                     Console.Write($"{number} ");
                 }
-                Console.ReadLine();
-                Console.Write("\nEnter y/yes to replay or any other character to exit ");
+                Thread.Sleep(2000);
+                Console.Write("\n\nEnter y/yes to replay or any other character to exit ");
                 choice = Console.ReadLine().ToLower();
                 primeNumbers.Clear();
             } while (choice == "y" || choice == "yes");
 
             Console.WriteLine("Goodbye for now");
+
+            //Uncomment this if you run this app with debugging
+            //Console.ReadLine();
         }
     }
 }

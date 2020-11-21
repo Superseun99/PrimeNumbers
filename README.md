@@ -1,7 +1,7 @@
 # Prime Numbers
 This console application displays the prime numbers from 0 to 1000 and then the game begins 🤩
 
-## Technologies and Concepts Learnt
+## Technologies Used and Concepts Learnt
 - Loops
 - Thread.Sleep() 
 - Executing actions based on user input

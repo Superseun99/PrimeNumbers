@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PrimeNumbers
 {
@@ -28,7 +29,7 @@ namespace PrimeNumbers
                 isPrime = true;
             }
             Console.ReadLine();
-            Console.Write("\n\nIt can also go from 0 to a number you pick, type y to continue or n to end the program ");
+            Console.Write("\nIt can also go from 0 to a number you pick, type y to continue or n to end the program ");
             var user_choice = Console.ReadLine().ToLower();
             switch (user_choice)
             {
@@ -41,7 +42,7 @@ namespace PrimeNumbers
                     break;
 
                 default:
-                    Console.WriteLine("Goodbye for now");
+                    Console.WriteLine("Exiting..");
                     break;
             }
         }
@@ -49,12 +50,38 @@ namespace PrimeNumbers
         private static void Game()
         {
             string choice;
+            var primeNumbers = new List<int>();
             do
             {
-                //Console.Write("Do you want to continue? ");
-                //choice = Console.ReadLine().ToLower();
                 Console.Write("Enter a number ");
+                var range = int.Parse(Console.ReadLine());
+                for (int i = 1; i <= range; i++)
+                {
+                    for (int j = i - 1; j > 0; j--)
+                    {
+                        if (j == 1)
+                        {
+                            primeNumbers.Add(i);
+                        }
+                        if (i % j != 0)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                Console.Write("The prime numbers are: ");
+                foreach (int number in primeNumbers)
+                {
+                    Console.Write($"{number} ");
+                }
+                Console.ReadLine();
+                Console.Write("\nEnter y/yes to replay or any other character to exit ");
                 choice = Console.ReadLine().ToLower();
+                primeNumbers.Clear();
             } while (choice == "y" || choice == "yes");
 
             Console.WriteLine("Goodbye for now");

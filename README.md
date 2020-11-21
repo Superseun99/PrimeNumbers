@@ -15,4 +15,4 @@ This console application displays the prime numbers from 0 to 1000 and then the 
 After it prints the prime numbers from 0 to 1000, you can decide to print the primes from 0 to your given range or you exit the program.
 
 ## License
-Lisence by Morgan Jay 🐱‍🏍
+[Morgan Jay](https://github.com/MorganJay) 🐱‍🏍

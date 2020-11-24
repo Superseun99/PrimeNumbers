@@ -6,34 +6,36 @@ namespace PrimeNumbers
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             WelcomeUser();
             ShowPrimeNumbers();
             SwitchModes();
-            Game();
             Close();
         }
 
         private static void WelcomeUser()
         {
             Console.WriteLine("This program displays the prime numbers from 0 to 1000...\n");
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             Console.WriteLine("Here are the prime numbers below:");
         }
 
         private static void ShowPrimeNumbers()
         {
-            bool isPrime = true;
-            for (int i = 2; i <= 1000; i++)
+            var isPrime = true;
+            for (var i = 2; i <= 1000; i++)
             {
-                for (int j = 2; j <= 1000; j++)
+                for (var j = 2; j <= 1000; j++)
                 {
-                    if (i != j && i % j == 0)
-                    {
-                        isPrime = false;
-                        break;
-                    }
+                    if (i == j || i % j != 0) continue;
+                    isPrime = false;
+                    break;
+                    //  if (i != j && i % j == 0)
+                    // {
+                    // isPrime = false;
+                    // break;
+                    // }
                 }
                 if (isPrime)
                 {
@@ -47,8 +49,8 @@ namespace PrimeNumbers
         private static void SwitchModes()
         {
             Console.Write("\n\nIt can also go from 0 to a number you pick, type y to continue or n to end the program ");
-            var user_choice = Console.ReadLine().ToLower();
-            switch (user_choice)
+            var userChoice = Console.ReadLine()?.ToLower();
+            switch (userChoice)
             {
                 case "y":
                     Game();
@@ -66,38 +68,45 @@ namespace PrimeNumbers
 
         private static void Game()
         {
-            string choice;
             var primeNumbers = new List<int>();
+            //var replay = true;
+            string choice;
             do
             {
                 Console.Write("Enter a number ");
-                var range = int.Parse(Console.ReadLine());
-                for (int i = 1; i <= range; i++)
+                int range;
+                try
                 {
-                    for (int j = i - 1; j > 0; j--)
+                    range = int.Parse(Console.ReadLine() ?? throw new InvalidOperationException());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("range cannot be empty");
+                    throw;
+                }
+                for (var i = 1; i <= range; i++)
+                {
+                    for (var j = i - 1; j > 0; j--)
                     {
                         if (j == 1)
                         {
                             primeNumbers.Add(i);
                         }
-                        if (i % j != 0)
-                        {
-                            continue;
-                        }
-                        else
+                        if (i % j == 0)
                         {
                             break;
                         }
                     }
                 }
+
                 Console.Write($"The prime numbers from 0 to {range} are: ");
-                foreach (int number in primeNumbers)
+                foreach (var number in primeNumbers)
                 {
                     Console.Write($"{number} ");
                 }
                 Thread.Sleep(2000);
-                Console.Write("\n\nEnter y/yes to replay or any other character to exit ");
-                choice = Console.ReadLine().ToLower();
+                Console.WriteLine("\nEnter y/yes to replay or any other character to exit ");
+                choice = Console.ReadLine()?.ToLower();
                 primeNumbers.Clear();
             } while (choice == "y" || choice == "yes");
         }

@@ -8,11 +8,23 @@ namespace PrimeNumbers
     {
         private static void Main(string[] args)
         {
-            //initialize condition
-            bool isPrime = true;
+            WelcomeUser();
+            ShowPrimeNumbers();
+            SwitchModes();
+            Game();
+            Close();
+        }
+
+        private static void WelcomeUser()
+        {
             Console.WriteLine("This program displays the prime numbers from 0 to 1000...\n");
             Thread.Sleep(2000);
             Console.WriteLine("Here are the prime numbers below:");
+        }
+
+        private static void ShowPrimeNumbers()
+        {
+            bool isPrime = true;
             for (int i = 2; i <= 1000; i++)
             {
                 for (int j = 2; j <= 1000; j++)
@@ -30,6 +42,10 @@ namespace PrimeNumbers
                 isPrime = true;
             }
             Thread.Sleep(2000);
+        }
+
+        private static void SwitchModes()
+        {
             Console.Write("\n\nIt can also go from 0 to a number you pick, type y to continue or n to end the program ");
             var user_choice = Console.ReadLine().ToLower();
             switch (user_choice)
@@ -84,11 +100,12 @@ namespace PrimeNumbers
                 choice = Console.ReadLine().ToLower();
                 primeNumbers.Clear();
             } while (choice == "y" || choice == "yes");
+        }
 
+        private static void Close()
+        {
             Console.WriteLine("Goodbye for now");
-
-            //Uncomment this if you run this app with debugging
-            //Console.ReadLine();
+            Thread.Sleep(2000);
         }
     }
 }

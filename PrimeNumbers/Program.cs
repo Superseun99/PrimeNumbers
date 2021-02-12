@@ -31,11 +31,6 @@ namespace PrimeNumbers
                     if (i == j || i % j != 0) continue;
                     isPrime = false;
                     break;
-                    //  if (i != j && i % j == 0)
-                    // {
-                    // isPrime = false;
-                    // break;
-                    // }
                 }
                 if (isPrime)
                 {
@@ -43,6 +38,7 @@ namespace PrimeNumbers
                 }
                 isPrime = true;
             }
+            Console.WriteLine("Hello from Seun");
             Thread.Sleep(2000);
         }
 

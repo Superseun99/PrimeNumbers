@@ -19,6 +19,7 @@ namespace PrimeNumbers
             Console.WriteLine("This program displays the prime numbers from 0 to 1000...\n");
             Thread.Sleep(1000);
             Console.WriteLine("Here are the prime numbers below:");
+            Console.WriteLine("Hi it's me again");
         }
 
         private static void ShowPrimeNumbers()
